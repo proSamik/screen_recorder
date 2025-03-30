@@ -1593,7 +1593,7 @@ extension MainViewController: SCStreamDelegate {
     func stream(_ stream: SCStream, didStopWithError error: Error) {
         print("Stream stopped with error: \(error.localizedDescription)")
         
-        // If we're still recording, try to restart the stream after a brief delay
+        // Only attempt to restart if we're recording and NOT in the process of stopping
         if isRecording && !isFinalizingRecording {
             restartAttempts += 1
             if restartAttempts > 3 {
@@ -1606,8 +1606,15 @@ extension MainViewController: SCStreamDelegate {
             
             print("Attempting to restart stream in 1 second")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.setupScreenCapture()
+                // Double-check we're still recording before restarting
+                if self.isRecording && !self.isFinalizingRecording {
+                    self.setupScreenCapture()
+                } else {
+                    print("Cancelling restart because recording was stopped")
+                }
             }
+        } else {
+            print("Not restarting stream because recording is being finalized or stopped")
         }
     }
 } 
