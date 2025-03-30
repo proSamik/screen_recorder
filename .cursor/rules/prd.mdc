@@ -1,0 +1,78 @@
+---
+description: This is product required document
+globs: 
+alwaysApply: false
+---
+**# Product Requirements Document (PRD) - macOS Screen Recording Application**
+
+## 1. Project Overview
+This macOS application is designed for **tutorial creators** who want to record their screens efficiently while ensuring optimal visibility for both **long-form and short-form video formats**. The application will offer **mouse-following zoom**, an **editing timeline**, and an **export system** optimized for both **standard (16:9) and mobile-friendly (9:16) formats**.
+
+## 2. Core Features & Functionalities
+
+### **Recording Module**
+- **Screen Recording**: Capture the entire screen or a selected window.
+- **Mouse Tracking & Zoom**: The recording follows the mouse pointer with smooth zoom transitions.
+- **Adjustable Zoom Levels**:
+  - **Laptop Mode (16:9)**: Standard zoom (e.g., 2x zoom following the cursor).
+  - **Mobile Mode (9:16)**: Higher zoom (e.g., 3-4x) for improved visibility on small screens.
+
+### **Editing Module**
+- **Timeline View**: A visual timeline showing recorded segments.
+- **Spotlight Effect**: Ability to highlight areas around the cursor.
+- **Padding & Background Overlays**: Add customizable backgrounds for improved aesthetics.
+- **Annotations & Captions**: Simple text overlays for explanations.
+
+### **Export Module**
+- **Multiple Aspect Ratios**:
+  - **16:9 (standard desktop format)**
+  - **9:16 (optimized for mobile with recorded content filling top 3/4 of the frame)**
+- **Automatic Zoom Adjustment for Mobile Exports**
+- **MP4 and MOV format support**
+
+## 3. Technical Stack
+- **Programming Language**: Swift (UIKit-based for simplicity)
+- **Screen Recording**: `ReplayKit`
+- **Mouse Tracking & Zoom**: `CoreGraphics` for cursor tracking & `CoreAnimation` for smooth zooming
+- **Video Editing Timeline**: `AVFoundation` for timeline-based video processing
+- **UI Framework**: UIKit (avoiding SwiftUI for simplicity)
+- **Storage & Export**: `AVAssetExportSession` for rendering video in different formats
+
+## 4. Structural Diagram
+```
+User Interface (UIKit)
+ ├── Recording Module (ReplayKit, CoreGraphics)
+ ├── Editing Module (AVFoundation, CoreAnimation)
+ ├── Export Module (AVAssetExportSession)
+```
+
+## 5. Development Roadmap (MVP)
+
+### **Phase 1: Basic Recording & Zooming (1-2 Weeks)**
+- Implement **screen recording** using `ReplayKit`.
+- Add **cursor tracking** and smooth zoom functionality.
+- Enable **basic video playback** for review.
+
+### **Phase 2: Editing & Timeline Features (2-3 Weeks)**
+- Implement **timeline-based editing** using `AVFoundation`.
+- Add **spotlight effects & zoom controls**.
+- Enable **background padding & overlays**.
+
+### **Phase 3: Export System (2 Weeks)**
+- Implement **export functionality** with multiple aspect ratios (16:9 & 9:16).
+- Optimize zoom levels for **mobile-friendly exports**.
+- Test for stability & performance.
+
+### **Phase 4: Refinements & Optimization (1-2 Weeks)**
+- Improve UI/UX.
+- Fix bugs & optimize performance.
+
+## 6. Initial Software Requirements for Development
+- **macOS 13+**
+- **Xcode 15+**
+- **CocoaPods or Swift Package Manager (SPM)**
+- **ReplayKit, AVFoundation, CoreGraphics frameworks**
+
+## 7. Summary
+This MVP provides a **fast-to-develop**, **user-friendly**, and **optimized** screen recording tool tailored for tutorial creators. Future iterations can refine performance, UI, and add advanced effects. The current tech stack ensures rapid development while maintaining stability.
+
